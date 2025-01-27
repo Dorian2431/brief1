@@ -162,3 +162,13 @@ btn20.addEventListener("click", () => {
     response10.style.background = "green";
 
 });
+
+const Oui = document.querySelectorAll(".btn-true");
+let bonnerep = 0;
+
+Oui.forEach(button => {
+    button.addEventListener("click", () => {
+        bonnerep++;
+        console.log("Nombre de bonnes réponses : " + bonnerep);
+    });
+});
