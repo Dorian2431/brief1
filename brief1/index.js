@@ -161,7 +161,4 @@ btn20.addEventListener("click", () => {
     response10.classList.add("show-response10");
     response10.style.background = "green";
 
-})
-
-const container = document.querySelector("div");
-const matches = container.querySelectorAll("li[click='green']");
+});
