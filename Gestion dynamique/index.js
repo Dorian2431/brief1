@@ -8,9 +8,9 @@ const produits = [
 const tbody = document.querySelector('#table-facture tbody');
 
 function initTableau() {
+    tbody.innerHTML = '';
 
-    for (let i = 0; i < produits.length; i++)
-    {
+    for (let i = 0; i < produits.length; i++) {
         const ligne = tbody.insertRow();
         let cellproduits = ligne.insertCell();
         cellproduits.innerHTML += produits[i].nom;
@@ -18,22 +18,42 @@ function initTableau() {
         cellprix.innerHTML += produits[i].prix;
         let cellaction = ligne.insertCell();
         cellaction.innerHTML += '<button>Supprimer</button>';
+
+        let sup = cellaction.querySelector('button');
+        sup.addEventListener('click', () => {
+            ligne.remove();
+            calculCotisation();
+
+
+        });
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     initTableau();
     calculCotisation()
 });
 
+
+const Supprimer = document.createElement('button');
+Supprimer.textContent = 'Réinitialiser';
+Supprimer.addEventListener('click', () => {
+    initTableau();
+    calculCotisation();
+});
+document.body.appendChild(Supprimer);
+
 function calculCotisation() {
-    let total = produits.reduce((acc, p) => {
-        let prixNumerique = parseFloat(p.prix.replace(",", "."));
-        return acc + prixNumerique;
-    }, 0);
+    let total = 0;
+    const tabTr = document.querySelectorAll('#table-facture tbody tr');
+
+    tabTr.forEach(ligne => {
+        let prix = ligne.cells[1].textContent.replace(",", ".");
+        total += parseFloat(prix);
+
+    });
 
     document.getElementById('total').innerHTML = `<p>Total: ${total.toFixed(2)}</p>`;
 }
-
-
 
 
