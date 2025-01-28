@@ -23,25 +23,15 @@ function initTableau() {
         sup.addEventListener('click', () => {
             ligne.remove();
             calculCotisation();
-
-
         });
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     initTableau();
     calculCotisation()
 });
-
-
-const Supprimer = document.createElement('button');
-Supprimer.textContent = 'Réinitialiser';
-Supprimer.addEventListener('click', () => {
-    initTableau();
-    calculCotisation();
-});
-document.body.appendChild(Supprimer);
 
 function calculCotisation() {
     let total = 0;
