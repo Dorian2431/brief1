@@ -28,6 +28,7 @@ function initTableau() {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     initTableau();
     calculCotisation()
